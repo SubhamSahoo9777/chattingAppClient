@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { MessageCircle, Mail, Lock, ArrowRight, Loader2, ShieldCheck, Zap, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -78,7 +78,7 @@ const Login = () => {
 
                 <div className="w-full max-w-sm relative z-10">
                     <div className="mb-10 text-center lg:text-left">
-                        <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">Create Account</h2>
+                        <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">User Login</h2>
                         <p className="text-gray-400">Enter your details to get started.</p>
                     </div>
 
@@ -130,7 +130,7 @@ const Login = () => {
                                 <Loader2 className="animate-spin" size={20} />
                             ) : (
                                 <>
-                                    Create Account
+                                    Login
                                     <ArrowRight size={18} />
                                 </>
                             )}
@@ -139,11 +139,11 @@ const Login = () => {
 
                     <div className="mt-8 text-center">
                         <p className="text-gray-500 text-sm">
-                            Already have an account?{' '}
+                            Dont  have an account?{' '}
                             {/* In production: <Link to="/login">...</Link> */}
-                            <a href="/login" className="text-white font-bold hover:text-purple-400 transition-colors ml-1">
-                                Log in
-                            </a>
+                            <Link to="/register" className="text-white font-bold hover:text-purple-400 transition-colors ml-1">
+                                Register
+                            </Link>
                         </p>
                     </div>
                 </div>
