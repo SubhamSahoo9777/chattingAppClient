@@ -140,6 +140,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../context/SocketContext';
 import { Search, LogOut, Plus } from 'lucide-react';
 import axios from 'axios';
+import {BASE_URL} from '../api';
 
 const Sidebar = () => {
     const { conversations, setSelectedConversation, selectedConversation } = useChat();
@@ -158,7 +159,7 @@ const Sidebar = () => {
             setIsSearching(true);
             try {
                 const { data } = await axios.get(
-                    `http://localhost:5000/api/chat/users?search=${query}`,
+                    `${BASE_URL}/api/chat/users?search=${query}`,
                     {
                         headers: { Authorization: `Bearer ${user.token}` }
                     }
