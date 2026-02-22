@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Base URL configuration
-const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://chattingappserver-oepf.onrender.com';
 
 // Create axios instance with base configuration
 const api = axios.create({
