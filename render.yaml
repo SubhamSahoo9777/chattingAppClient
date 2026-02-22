@@ -1,0 +1,14 @@
+services:
+  # A static web service running a built React app
+  - type: web
+    name: chattingappclient
+    env: static
+    buildCommand: npm run build
+    staticPublishPath: build
+    routes:
+      - route: /login
+        redirect: /index.html
+      - route: /register
+        redirect: /index.html
+      - route: /*
+        redirect: /index.html
