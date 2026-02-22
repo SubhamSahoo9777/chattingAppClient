@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useAuth } from './AuthContext';
-import { BASE_URL } from '../api';
 
+const BASE_URL = 'https://chattingappserver-oepf.onrender.com';
 
 const SocketContext = createContext();
 
