@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useAuth } from './AuthContext';
 
+const BASE_URL = 'http://localhost:5000';
+
 const SocketContext = createContext();
 
 export const SocketProvider = ({ children }) => {
@@ -11,7 +13,7 @@ export const SocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            const newSocket = io('http://localhost:5000', {
+            const newSocket = io(BASE_URL, {
                 query: { userId: user._id }
             });
 

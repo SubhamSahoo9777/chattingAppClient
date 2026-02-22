@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { chatAPI } from '../api';
 import { useAuth } from './AuthContext';
 import { useSocket } from './SocketContext';
 
@@ -14,15 +14,10 @@ export const ChatProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [typingUsers, setTypingUsers] = useState({}); // conversationId: boolean
 
-    const api = axios.create({
-        baseURL: 'http://localhost:5000/api/chat',
-        headers: { Authorization: `Bearer ${user?.token}` }
-    });
-
     const fetchConversations = async () => {
         if (!user) return;
         try {
-            const { data } = await api.get('/conversations');
+            const { data } = await chatAPI.getConversations();
             setConversations(data);
         } catch (error) {
             console.error('Fetch error:', error);
@@ -33,7 +28,7 @@ export const ChatProvider = ({ children }) => {
         if (!convId) return;
         setLoading(true);
         try {
-            const { data } = await api.get(`/messages/${convId}`);
+            const { data } = await chatAPI.getMessages(convId);
             setMessages(data);
         } catch (error) {
             console.error('Fetch message error:', error);
@@ -44,7 +39,7 @@ export const ChatProvider = ({ children }) => {
 
     const sendMessage = async (text, recipientId) => {
         try {
-            const { data } = await api.post('/messages', {
+            const { data } = await chatAPI.sendMessage({
                 conversationId: selectedConversation?._id,
                 text,
                 recipientId
