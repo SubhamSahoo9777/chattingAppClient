@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useAuth } from './AuthContext';
+import { BASE_URL } from '../api';
 
-const BASE_URL = 'http://localhost:5000';
 
 const SocketContext = createContext();
 
